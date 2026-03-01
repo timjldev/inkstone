@@ -22,7 +22,7 @@ defineEmits(['close'])
           <div class="detail-pane">
             <p class="detail-description">{{ artwork.description }}</p>
             <p class="detail-body">
-              This work is an original piece by Margueritte, rendered with meticulous attention
+              This work is an original piece by Marguerite, rendered with meticulous attention
               to surface, tone, and gesture. Each piece is unique and bears the unmistakable
               character of the artist's hand.
             </p>

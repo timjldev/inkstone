@@ -1,6 +1,6 @@
 <template>
   <footer class="site-footer">
-    <span class="footer-name">Margueritte Inkstone</span>
+    <span class="footer-name">Marguerite Inkstone</span>
     <span class="separator" aria-hidden="true">·</span>
     <a href="mailto:hello@inkstone.art" class="footer-link">hello@inkstone.art</a>
     <span class="separator" aria-hidden="true">·</span>

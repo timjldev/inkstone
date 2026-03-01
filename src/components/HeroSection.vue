@@ -1,9 +1,9 @@
 <template>
   <section class="hero">
-    <h1 class="hero-title">INKSTONE <span>by Margueritte</span></h1>
+    <h1 class="hero-title">INKSTONE <span>by Marguerite</span></h1>
 
     <div class="photo-placeholder">
-      <img src="/marguerite.avif" alt="Margueritte" class="hero-photo" />
+      <img src="/marguerite.avif" alt="Marguerite" class="hero-photo" />
     </div>
 
     <p class="intro">
