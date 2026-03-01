@@ -2,11 +2,14 @@
 defineProps({
   filename: { type: String, required: true },
   description: { type: String, required: true },
+  fullimage: { type: String, required: true },
 })
+
+defineEmits(['select'])
 </script>
 
 <template>
-  <article class="gallery-item">
+  <article class="gallery-item" @click="$emit('select')" role="button" tabindex="0" @keydown.enter="$emit('select')">
     <div class="img-wrapper">
       <img
         :src="`/media/${filename}`"
@@ -25,6 +28,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  cursor: pointer;
 }
 
 .img-wrapper {
@@ -33,6 +37,11 @@ defineProps({
   background: var(--color-surface);
   overflow: hidden;
   border: 1px solid rgba(232, 224, 213, 0.08);
+  transition: border-color 0.2s;
+}
+
+.gallery-item:hover .img-wrapper {
+  border-color: var(--color-accent);
 }
 
 .artwork-img {
@@ -40,6 +49,11 @@ defineProps({
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: opacity 0.2s;
+}
+
+.gallery-item:hover .artwork-img {
+  opacity: 0.85;
 }
 
 .description {

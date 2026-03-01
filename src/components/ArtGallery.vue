@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import GalleryItem from './GalleryItem.vue'
+import ArtworkModal from './ArtworkModal.vue'
 
 const artworks = ref([])
 const strip = ref(null)
+const selected = ref(null)
 
 onMounted(async () => {
   const res = await fetch('/artworks.csv')
@@ -12,10 +14,11 @@ onMounted(async () => {
   artworks.value = lines
     .filter(line => line.trim())
     .map(line => {
-      const comma = line.indexOf(',')
+      const parts = line.split(',')
       return {
-        filename: line.slice(0, comma).trim(),
-        description: line.slice(comma + 1).trim(),
+        filename: parts[0].trim(),
+        description: parts[1].trim(),
+        fullimage: parts[2].trim(),
       }
     })
 })
@@ -39,11 +42,15 @@ function scroll(dir) {
           :key="art.filename"
           :filename="art.filename"
           :description="art.description"
+          :fullimage="art.fullimage"
+          @select="selected = art"
         />
       </div>
       <button class="arrow arrow-right" @click="scroll(1)" aria-label="Scroll right">&#8594;</button>
     </div>
   </section>
+
+  <ArtworkModal :artwork="selected" @close="selected = null" />
 </template>
 
 <style scoped>
