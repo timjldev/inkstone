@@ -3,7 +3,7 @@
     <h1 class="hero-title">INKSTONE <span>by Margueritte</span></h1>
 
     <div class="photo-placeholder">
-      <span class="placeholder-label">[ photo ]</span>
+      <img src="/marguerite.avif" alt="Margueritte" class="hero-photo" />
     </div>
 
     <p class="intro">
@@ -54,10 +54,11 @@
   border: 1px solid rgba(232, 224, 213, 0.1);
 }
 
-.placeholder-label {
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .intro {
