@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/inkstone/",
     "preview": "vite preview"
   },
   "dependencies": {
+    "sharp": "^0.34.5",
     "vue": "^3.5.29"
   },
   "devDependencies": {
