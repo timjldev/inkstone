@@ -45,7 +45,7 @@
 
 .photo-placeholder {
   width: 100%;
-  max-width: 700px;
+  max-width: 350px;
   background: var(--color-surface);
   border: 1px solid rgba(232, 224, 213, 0.1);
 }
