@@ -4,6 +4,8 @@ defineProps({
 })
 
 defineEmits(['close'])
+
+const base = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -14,7 +16,7 @@ defineEmits(['close'])
         <div class="modal-body">
           <div class="image-pane">
             <img
-              :src="`/media/${artwork.fullimage}`"
+              :src="`${base}media/${artwork.fullimage}`"
               :alt="artwork.description"
               class="full-img"
             />

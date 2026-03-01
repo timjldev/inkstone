@@ -6,13 +6,15 @@ defineProps({
 })
 
 defineEmits(['select'])
+
+const base = import.meta.env.BASE_URL
 </script>
 
 <template>
   <article class="gallery-item" @click="$emit('select')" role="button" tabindex="0" @keydown.enter="$emit('select')">
     <div class="img-wrapper">
       <img
-        :src="`/media/${filename}`"
+        :src="`${base}media/${filename}`"
         :alt="description"
         class="artwork-img"
       />

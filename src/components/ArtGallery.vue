@@ -8,7 +8,7 @@ const strip = ref(null)
 const selected = ref(null)
 
 onMounted(async () => {
-  const res = await fetch('/artworks.csv')
+  const res = await fetch(`${import.meta.env.BASE_URL}artworks.csv`)
   const text = await res.text()
   const lines = text.split('\n').slice(1) // skip header
   artworks.value = lines

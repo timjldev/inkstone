@@ -1,9 +1,13 @@
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
+
 <template>
   <section class="hero">
     <h1 class="hero-title">INKSTONE <span>by Marguerite</span></h1>
 
     <div class="photo-placeholder">
-      <img src="/marguerite.avif" alt="Marguerite" class="hero-photo" />
+      <img :src="`${base}marguerite.avif`" alt="Marguerite" class="hero-photo" />
     </div>
 
     <p class="intro">
