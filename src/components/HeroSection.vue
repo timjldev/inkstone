@@ -46,18 +46,13 @@
 .photo-placeholder {
   width: 100%;
   max-width: 700px;
-  aspect-ratio: 16 / 9;
   background: var(--color-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid rgba(232, 224, 213, 0.1);
 }
 
 .hero-photo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
