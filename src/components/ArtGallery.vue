@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import GalleryItem from './GalleryItem.vue'
 
 const artworks = ref([])
+const strip = ref(null)
 
 onMounted(async () => {
   const res = await fetch('/artworks.csv')
@@ -18,6 +19,10 @@ onMounted(async () => {
       }
     })
 })
+
+function scroll(dir) {
+  strip.value.scrollBy({ left: dir * 240, behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -26,13 +31,17 @@ onMounted(async () => {
       <h2 class="gallery-title">Explore the collection</h2>
       <p class="gallery-sub">Prices available upon inquiry</p>
     </div>
-    <div class="scroll-strip">
-      <GalleryItem
-        v-for="art in artworks"
-        :key="art.filename"
-        :filename="art.filename"
-        :description="art.description"
-      />
+    <div class="scroll-wrapper">
+      <button class="arrow arrow-left" @click="scroll(-1)" aria-label="Scroll left">&#8592;</button>
+      <div class="scroll-strip" ref="strip">
+        <GalleryItem
+          v-for="art in artworks"
+          :key="art.filename"
+          :filename="art.filename"
+          :description="art.description"
+        />
+      </div>
+      <button class="arrow arrow-right" @click="scroll(1)" aria-label="Scroll right">&#8594;</button>
     </div>
   </section>
 </template>
@@ -67,6 +76,14 @@ onMounted(async () => {
   letter-spacing: 0.05em;
 }
 
+.scroll-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
 .scroll-strip {
   display: flex;
   gap: 1.25rem;
@@ -84,5 +101,21 @@ onMounted(async () => {
 .scroll-strip::-webkit-scrollbar-thumb {
   background: var(--color-accent);
   border-radius: 2px;
+}
+
+.arrow {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.arrow:hover {
+  color: var(--color-accent);
 }
 </style>
