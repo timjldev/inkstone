@@ -1,10 +1,10 @@
 <template>
   <footer class="site-footer">
-    <span class="footer-name">Marguerite Inkstone</span>
+    <span class="footer-name">Marguerite Luntungan</span>
     <span class="separator" aria-hidden="true">·</span>
-    <a href="mailto:hello@inkstone.art" class="footer-link">hello@inkstone.art</a>
+    <a href="mailto:marguerite@inkstone.art" class="footer-link">marguerite@inkstone.art</a>
     <span class="separator" aria-hidden="true">·</span>
-    <span class="footer-address">12 Gallery Lane, Paris, France</span>
+    <span class="footer-address">PO Box 377, Sutherland NSW 1499</span>
   </footer>
 </template>
 

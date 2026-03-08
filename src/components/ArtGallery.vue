@@ -14,11 +14,12 @@ onMounted(async () => {
   artworks.value = lines
     .filter(line => line.trim())
     .map(line => {
-      const parts = line.split(',')
+      const parts = line.split('|')
       return {
         filename: parts[0].trim(),
         description: parts[1].trim(),
         fullimage: parts[2].trim(),
+        expanded: parts[3]?.trim() ?? '',
       }
     })
 })

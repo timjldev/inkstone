@@ -11,10 +11,16 @@ const base = import.meta.env.BASE_URL
     </div>
 
     <p class="intro">
-      Inkstone is an atelier dedicated to the contemplative arts — ink, charcoal, and pigment
-      rendered on paper, linen, and stone. Each work emerges from a practice of stillness,
-      bearing the traces of time and the texture of the hand. Originals and limited editions
-      are available for private collectors worldwide.
+      Having lived in in Malaysia, Marguerite studied with a Taiwanese master in the Sumi-e discipline of inks on rice paper.<br/>
+
+      Winning four international awards, she also studied in China with a Chinese living treasure, now deceased.<br/>
+
+      Marguerite paints from her Northern Tablelands Garden studio, where she explores mixing Sumi-e with other painting styles.<br/>
+
+      Marguerite paints with two very spoilt Rhodesian Ridgebacks.<br/>
+    </p>
+    <p class="intro-bold">
+      <i>The tree knows its beauty, the artist tells its story.</i>
     </p>
   </section>
 </template>
@@ -63,7 +69,13 @@ const base = import.meta.env.BASE_URL
 .intro {
   max-width: 560px;
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.intro-bold {
+  max-width: 560px;
+  color: var(--color-text-muted);
+  font-size: 1.3rem;
   line-height: 1.8;
 }
 </style>

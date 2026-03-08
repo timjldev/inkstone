@@ -23,13 +23,9 @@ const base = import.meta.env.BASE_URL
           </div>
           <div class="detail-pane">
             <p class="detail-description">{{ artwork.description }}</p>
-            <p class="detail-body">
-              This work is an original piece by Marguerite, rendered with meticulous attention
-              to surface, tone, and gesture. Each piece is unique and bears the unmistakable
-              character of the artist's hand.
-            </p>
+            <p class="detail-body">{{ artwork.expanded }}</p>
             <p class="inquiry-note">Prices available upon inquiry.</p>
-            <a href="mailto:hello@inkstone.art" class="inquiry-link">hello@inkstone.art</a>
+            <a href="mailto:marguerite@inkstone.art" class="inquiry-link">marguerite@inkstone.art</a>
           </div>
         </div>
       </div>
