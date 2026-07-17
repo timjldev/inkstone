@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import GalleryItem from './GalleryItem.vue'
 import ArtworkModal from './ArtworkModal.vue'
 
 const artworks = ref([])
 const strip = ref(null)
-const selected = ref(null)
+const selectedIndex = ref(null)
+const selected = computed(() => selectedIndex.value !== null ? artworks.value[selectedIndex.value] : null)
 
 onMounted(async () => {
   const res = await fetch(`${import.meta.env.BASE_URL}artworks.csv`)
@@ -27,6 +28,11 @@ onMounted(async () => {
 function scroll(dir) {
   strip.value.scrollBy({ left: dir * 240, behavior: 'smooth' })
 }
+
+function navigate(dir) {
+  const len = artworks.value.length
+  selectedIndex.value = (selectedIndex.value + dir + len) % len
+}
 </script>
 
 <template>
@@ -39,19 +45,19 @@ function scroll(dir) {
       <button class="arrow arrow-left" @click="scroll(-1)" aria-label="Scroll left">&#8592;</button>
       <div class="scroll-strip" ref="strip">
         <GalleryItem
-          v-for="art in artworks"
+          v-for="(art, index) in artworks"
           :key="art.filename"
           :filename="art.filename"
           :description="art.description"
           :fullimage="art.fullimage"
-          @select="selected = art"
+          @select="selectedIndex = index"
         />
       </div>
       <button class="arrow arrow-right" @click="scroll(1)" aria-label="Scroll right">&#8594;</button>
     </div>
   </section>
 
-  <ArtworkModal :artwork="selected" @close="selected = null" />
+  <ArtworkModal :artwork="selected" @close="selectedIndex = null" @prev="navigate(-1)" @next="navigate(1)" />
 </template>
 
 <style scoped>

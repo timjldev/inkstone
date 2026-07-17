@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <span class="footer-name">Marguerite Luntungan</span>
     <span class="separator" aria-hidden="true">·</span>
-    <a href="mailto:marguerite@inkstone.art" class="footer-link">marguerite@inkstone.art</a>
+    <a href="mailto:inkstone@gmail.com" class="footer-link">inkstone@gmail.com</a>
     <span class="separator" aria-hidden="true">·</span>
     <span class="footer-address">PO Box 377, Sutherland NSW 1499</span>
   </footer>

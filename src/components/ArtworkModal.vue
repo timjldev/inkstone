@@ -3,7 +3,7 @@ defineProps({
   artwork: { type: Object, default: null },
 })
 
-defineEmits(['close'])
+defineEmits(['close', 'prev', 'next'])
 
 const base = import.meta.env.BASE_URL
 </script>
@@ -11,6 +11,8 @@ const base = import.meta.env.BASE_URL
 <template>
   <Teleport to="body">
     <div v-if="artwork" class="overlay" @click.self="$emit('close')">
+      <button class="nav-arrow nav-arrow-left" @click="$emit('prev')" aria-label="Previous artwork">&#8592;</button>
+      <button class="nav-arrow nav-arrow-right" @click="$emit('next')" aria-label="Next artwork">&#8594;</button>
       <div class="modal">
         <button class="close-btn" @click="$emit('close')" aria-label="Close">&#10005;</button>
         <div class="modal-body">
@@ -25,7 +27,7 @@ const base = import.meta.env.BASE_URL
             <p class="detail-description">{{ artwork.description }}</p>
             <p class="detail-body">{{ artwork.expanded }}</p>
             <p class="inquiry-note">Prices available upon inquiry.</p>
-            <a href="mailto:marguerite@inkstone.art" class="inquiry-link">marguerite@inkstone.art</a>
+            <a href="mailto:inkstone@gmail.com" class="inquiry-link">inkstone@gmail.com</a>
           </div>
         </div>
       </div>
@@ -71,6 +73,35 @@ const base = import.meta.env.BASE_URL
 
 .close-btn:hover {
   color: var(--color-accent);
+}
+
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 1rem;
+  line-height: 1;
+  z-index: 101;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.nav-arrow:hover {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.nav-arrow-left {
+  left: 1rem;
+}
+
+.nav-arrow-right {
+  right: 1rem;
 }
 
 .modal-body {
