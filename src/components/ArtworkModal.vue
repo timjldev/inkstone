@@ -78,8 +78,8 @@ function onTouchEnd(e) {
 <template>
   <Teleport to="body">
     <div v-if="artwork" class="overlay" @click.self="$emit('close')">
-      <button class="nav-arrow nav-arrow-left" @click="$emit('prev')" aria-label="Previous artwork">&#8592;</button>
-      <button class="nav-arrow nav-arrow-right" @click="$emit('next')" aria-label="Next artwork">&#8594;</button>
+      <button class="nav-arrow nav-fixed nav-arrow-left" @click="$emit('prev')" aria-label="Previous artwork">&#8592;</button>
+      <button class="nav-arrow nav-fixed nav-arrow-right" @click="$emit('next')" aria-label="Next artwork">&#8594;</button>
       <div class="modal">
         <button class="close-btn" @click="$emit('close')" aria-label="Close">&#10005;</button>
         <div class="modal-body">
@@ -100,6 +100,10 @@ function onTouchEnd(e) {
                 transition: interacting ? 'none' : 'transform 0.2s ease',
               }"
             />
+          </div>
+          <div class="mobile-nav">
+            <button class="nav-arrow" @click="$emit('prev')" aria-label="Previous artwork">&#8592;</button>
+            <button class="nav-arrow" @click="$emit('next')" aria-label="Next artwork">&#8594;</button>
           </div>
           <div class="detail-pane">
             <p class="detail-body">{{ artwork.expanded }}</p>
@@ -153,9 +157,6 @@ function onTouchEnd(e) {
 }
 
 .nav-arrow {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--color-text-muted);
@@ -164,7 +165,6 @@ function onTouchEnd(e) {
   cursor: pointer;
   padding: 1rem;
   line-height: 1;
-  z-index: 101;
   transition: color 0.2s, opacity 0.2s;
 }
 
@@ -173,12 +173,23 @@ function onTouchEnd(e) {
   opacity: 1;
 }
 
+.nav-fixed {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+
 .nav-arrow-left {
   left: 1rem;
 }
 
 .nav-arrow-right {
   right: 1rem;
+}
+
+.mobile-nav {
+  display: none;
 }
 
 .modal-body {
@@ -263,10 +274,11 @@ function onTouchEnd(e) {
 
   .modal-body {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:
       'title'
       'image'
+      'nav'
       'detail';
     height: auto;
     max-height: 92vh;
@@ -281,16 +293,35 @@ function onTouchEnd(e) {
     height: 45vh;
   }
 
+  .nav-fixed {
+    display: none;
+  }
+
+  .mobile-nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .mobile-nav .nav-arrow {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 999px;
+    opacity: 0.85;
+    font-size: 1.3rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  .mobile-nav .nav-arrow:hover {
+    opacity: 1;
+  }
+
   .detail-pane {
     border-left: none;
     border-top: 1px solid rgba(232, 224, 213, 0.08);
     padding: 1.25rem 1.25rem 2rem;
     overflow-y: visible;
-  }
-
-  .nav-arrow {
-    font-size: 1.4rem;
-    padding: 0.5rem;
   }
 }
 </style>
