@@ -132,4 +132,16 @@ function navigate(dir) {
 .arrow:hover {
   color: var(--color-accent);
 }
+
+@media (max-width: 700px) {
+  .gallery-section {
+    height: auto;
+    min-height: 0;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .scroll-wrapper {
+    align-items: stretch;
+  }
+}
 </style>
